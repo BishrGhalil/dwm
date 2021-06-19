@@ -87,7 +87,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_c,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
@@ -112,11 +112,12 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
     /*                      MOD+ALT COMMANDS                     */
-	{ MODKEY|Mod1Mask,              XK_s,      spawn,          SHCMD("scrot 'Cheese_%a-%d%b%y_%H.%M.png'") },
+	{ MODKEY|Mod1Mask,              XK_s,      spawn,          SHCMD("scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e sxiv ~/$f") },
     { MODKEY|Mod1Mask,              XK_f,      spawn,          SHCMD("st -e lf") },
     { MODKEY|Mod1Mask,              XK_b,      spawn,          SHCMD("firefox") },
     { MODKEY|Mod1Mask,              XK_p,      spawn,          SHCMD("st -e htop") },
     { MODKEY|Mod1Mask,              XK_m,      spawn,          SHCMD("st -e ncmpcpp") },
+    { MODKEY|Mod1Mask,              XK_e,      spawn,          SHCMD("st -e neomutt") },
     { MODKEY|Mod1Mask,              XK_Return, spawn,          SHCMD("st -e nvim") },
     { MODKEY|Mod1Mask,              XK_w,      spawn,          SHCMD("sxiv -t ~/wallpapers") },
     /*                  MOD+SHIFT COMMANDS                      */
@@ -127,6 +128,10 @@ static Key keys[] = {
 	{ MODKEY,        			    XK_bracketleft,spawn,	   SHCMD("mpc seek -10") },
 	{ MODKEY|ShiftMask,		        XK_bracketleft,spawn,	   SHCMD("mpc seek -60") },
 	{ MODKEY,                       XK_bracketright,	spawn, SHCMD("mpc seek +10") },
+	{ ShiftMask,                    XK_period,	        spawn, SHCMD("mpc next") },
+	{ ShiftMask,                    XK_comma,	        spawn, SHCMD("mpc prev") },
+	{ ShiftMask|Mod1Mask,           XK_comma,	        spawn, SHCMD("mpc volume -10") },
+	{ ShiftMask|Mod1Mask,           XK_period,	        spawn, SHCMD("mpc volume +10") },
 	{ MODKEY|ShiftMask,		        XK_bracketright,	spawn, SHCMD("mpc seek +60") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
