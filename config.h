@@ -12,10 +12,10 @@ static const char *fonts[]          = { "SourceCodePro:size=10" };
 static const char dmenufont[]       = "SourceCodePro:size=10";
 // static const char col_gray1[]       = "#1a1b26";    // status bar bg
 static const char col_gray1[]       = "#282a36";    // status bar bg
-static const char col_gray2[]       = "#ffb86c";    // None selected window border
+static const char col_gray2[]       = "#282a36";    // None selected window border
 static const char col_gray3[]       = "#ff79c6";    // forground
-static const char col_gray4[]       = "#ffb86c";    // window title fg
-static const char col_cyan[]        = "#282a36";    // selected window border and title bg 
+static const char col_gray4[]       = "#282a36";    // window title fg
+static const char col_cyan[]        = "#ffb86c";    // selected window border and title bg 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -134,9 +134,9 @@ static Key keys[] = {
     { MODKEY|Mod1Mask,              XK_v,      spawn,          SHCMD("~/Documents/Scripts/vpnconn") },
     { MODKEY|Mod1Mask,              XK_z,      spawn,          SHCMD("zathura") },
     /*                  MOD+SHIFT COMMANDS                      */
-    { MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("amixer set Master 5%-") },
-    { MODKEY|ShiftMask,             XK_u,      spawn,          SHCMD("amixer set Master 5%+") },
-    { MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("amixer set Master toggle && notify-send -t 500 -u low \"VOLUME TOGGLED\"") },
+    { MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("amixer set Master 5%- && pkill -RTMIN+30 dwmblocks") },
+    { MODKEY|ShiftMask,             XK_u,      spawn,          SHCMD("amixer set Master 5%+ && pkill -RTMIN+30 dwmblocks") },
+    { MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("amixer set Master toggle && pkill -RTMIN+30 dwmblocks && notify-send -t 500 -u low \"VOLUME TOGGLED\"") },
 	{ ShiftMask|Mod1Mask,	        XK_m,	    spawn,		   SHCMD("mpc toggle; notify-send -t 500 \"MPC\" \"TOGGLED\"") },
 	{ MODKEY,        			    XK_bracketleft,spawn,	   SHCMD("mpc seek -10") },
 	{ MODKEY|ShiftMask,		        XK_bracketleft,spawn,	   SHCMD("mpc seek -60") },
@@ -165,7 +165,6 @@ static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkTagBar,            0,              Button4,        shiftview,     { .i = -1 } },
 	{ ClkTagBar,            0,              Button5,        shiftview,     { .i = +1 } },

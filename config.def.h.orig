@@ -10,11 +10,12 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "SourceCodePro:size=10" };
 static const char dmenufont[]       = "SourceCodePro:size=10";
-static const char col_gray1[]       = "#1a1b27";
-static const char col_gray2[]       = "#1a1b27";
-static const char col_gray3[]       = "#f7768e";
-static const char col_gray4[]       = "#1a1b27";
-static const char col_cyan[]        = "#f7768e";
+// static const char col_gray1[]       = "#1a1b26";    // status bar bg
+static const char col_gray1[]       = "#282a36";    // status bar bg
+static const char col_gray2[]       = "#282a36";    // None selected window border
+static const char col_gray3[]       = "#ff79c6";    // forground
+static const char col_gray4[]       = "#ffb86c";    // window title fg
+static const char col_cyan[]        = "#ffb86c";    // selected window border and title bg 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -45,9 +46,9 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "Tile",      tile },    /* first entry is default */
+ 	{ "Fibo",      spiral },
 	{ "Float",      NULL },    /* no layout function means floating behavior */
 	{ "Mono",      monocle },
- 	{ "Fibo",      spiral },
  	{ "[\\]",     dwindle },
 };
 
@@ -81,7 +82,8 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("dmenu_run -i -fn 'Source Code Pro:size=10' -nb '#1a1b2c' -nf '#f7768e' -sb '#ff9e64' -sf '#1a1b27'") },
+	//{ MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("dmenu_run -i -fn 'Source Code Pro:size=10' -nb '#1a1b2c' -nf '#f7768e' -sb '#ff9e64' -sf '#1a1b27'") },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("dmenu_run -i -fn 'Source Code Pro:size=10'") },
     { MODKEY|ControlMask,           XK_Return, spawn,          SHCMD("alacritty -e bash") },
     { MODKEY,                       XK_Return, spawn,          SHCMD("st -e zsh") },
 	/*{ MODKEY|ShiftMask,             XK_Return, spawn,  {.v = scratchpadcmd } },*/
@@ -94,6 +96,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
+	{ MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
+	{ MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
+
 
 	/* { MODKEY,                       XK_Return, zoom,           {0} }, */
 	{ MODKEY,                       XK_Tab,    view,           {0} },
@@ -126,6 +132,7 @@ static Key keys[] = {
     { MODKEY|Mod1Mask,              XK_Return, spawn,          SHCMD("st -e nvim") },
     { MODKEY|Mod1Mask,              XK_w,      spawn,          SHCMD("sxiv -t ~/wallpapers") },
     { MODKEY|Mod1Mask,              XK_v,      spawn,          SHCMD("~/Documents/Scripts/vpnconn") },
+    { MODKEY|Mod1Mask,              XK_z,      spawn,          SHCMD("zathura") },
     /*                  MOD+SHIFT COMMANDS                      */
     { MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("amixer set Master 5%-") },
     { MODKEY|ShiftMask,             XK_u,      spawn,          SHCMD("amixer set Master 5%+") },
