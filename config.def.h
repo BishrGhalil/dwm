@@ -86,7 +86,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("dmenu_run -i -fn 'Source Code Pro:size=10'") },
     { MODKEY|ControlMask,           XK_Return, spawn,          SHCMD("alacritty -e bash") },
     { MODKEY,                       XK_Return, spawn,          SHCMD("st -e zsh") },
-	/*{ MODKEY|ShiftMask,             XK_Return, spawn,  {.v = scratchpadcmd } },*/
+	{ MODKEY|Mod1Mask,             XK_Return, spawn,  {.v = scratchpadcmd } },
     { MODKEY,                       XK_n,      shiftview,      { .i = +1 } },
 	{ MODKEY,                       XK_p,      shiftview,      { .i = -1 } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -127,7 +127,6 @@ static Key keys[] = {
     { MODKEY|Mod1Mask,              XK_p,      spawn,          SHCMD("st -e htop") },
     { MODKEY|Mod1Mask,              XK_m,      spawn,          SHCMD("st -e ncmpcpp-ueberzug") },
     { MODKEY|Mod1Mask,              XK_e,      spawn,          SHCMD("st -e neomutt") },
-    { MODKEY|Mod1Mask,              XK_Return, spawn,          SHCMD("st -e nvim") },
     { MODKEY|Mod1Mask,              XK_w,      spawn,          SHCMD("sxiv -t ~/wallpapers") },
     { MODKEY|Mod1Mask,              XK_v,      spawn,          SHCMD("~/Documents/Scripts/vpnconn") },
     { MODKEY|Mod1Mask,              XK_z,      spawn,          SHCMD("zathura") },
