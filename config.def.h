@@ -31,7 +31,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
+	// { "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
 	{ "st-256color",NULL,  NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
@@ -85,10 +85,10 @@ static Key keys[] = {
 	//{ MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("dmenu_run -i -fn 'Source Code Pro:size=10' -nb '#1a1b2c' -nf '#f7768e' -sb '#ff9e64' -sf '#1a1b27'") },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("dmenu_run -i -fn 'Source Code Pro:size=10'") },
 	{ MODKEY|ShiftMask,             XK_d, spawn,          SHCMD("rofi -show run") },
-    { MODKEY|ControlMask,           XK_Return, spawn,          SHCMD("alacritty -e bash") },
-    { MODKEY,                       XK_Return, spawn,          SHCMD("st -e zsh") },
+	{ MODKEY|ControlMask,           XK_Return, spawn,          SHCMD("alacritty -e bash") },
+	{ MODKEY,                       XK_Return, spawn,          SHCMD("st -e zsh") },
 	{ MODKEY|Mod1Mask,             XK_Return, spawn,  {.v = scratchpadcmd } },
-    { MODKEY,                       XK_n,      shiftview,      { .i = +1 } },
+	{ MODKEY,                       XK_n,      shiftview,      { .i = +1 } },
 	{ MODKEY,                       XK_p,      shiftview,      { .i = -1 } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	STACKKEYS(MODKEY,                          focus)
@@ -100,6 +100,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_h,      setcfact,       {.f = +0.25} },
 	{ MODKEY|ShiftMask,             XK_l,      setcfact,       {.f = -0.25} },
 	{ MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
+
 	/* { MODKEY,                       XK_Return, zoom,           {0} }, */
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
@@ -120,21 +121,22 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+
     /*                      MOD+ALT COMMANDS                     */
 	{ MODKEY|Mod1Mask,              XK_s,      spawn,          SHCMD("maim ~/Pictures/ScreenShots/$(date +%s).png;notify-send -t 600 \"MAIM\" \"Captured.\"") },
 	{ MODKEY|Mod1Mask,              XK_a,      spawn,          SHCMD("maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png;notify-send -t 600 \"MAIM\" \"Copied to cliboard.\"") },
-    { MODKEY|Mod1Mask,              XK_f,      spawn,          SHCMD("st -e lf") },
-    { MODKEY|Mod1Mask,              XK_b,      spawn,          SHCMD("firefox") },
-    { MODKEY|Mod1Mask,              XK_p,      spawn,          SHCMD("st -e htop") },
-    { MODKEY|Mod1Mask,              XK_m,      spawn,          SHCMD("st -e ncmpcpp-ueberzug") },
-    { MODKEY|Mod1Mask,              XK_e,      spawn,          SHCMD("st -e neomutt") },
-    { MODKEY|Mod1Mask,              XK_w,      spawn,          SHCMD("sxiv -t ~/wallpapers") },
-    { MODKEY|Mod1Mask,              XK_v,      spawn,          SHCMD("~/Documents/Scripts/vpnconn") },
-    { MODKEY|Mod1Mask,              XK_z,      spawn,          SHCMD("zathura") },
-    /*                  MOD+SHIFT COMMANDS                      */
-    { MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("amixer set Master 5%- && pkill -RTMIN+30 dwmblocks") },
-    { MODKEY|ShiftMask,             XK_u,      spawn,          SHCMD("amixer set Master 5%+ && pkill -RTMIN+30 dwmblocks") },
-    { MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("amixer set Master toggle && pkill -RTMIN+30 dwmblocks && notify-send -t 500 -u low \"VOLUME TOGGLED\"") },
+	{ MODKEY|Mod1Mask,              XK_f,      spawn,          SHCMD("st -e lf") },
+	{ MODKEY|Mod1Mask,              XK_b,      spawn,          SHCMD("firefox") },
+	{ MODKEY|Mod1Mask,              XK_p,      spawn,          SHCMD("st -e htop") },
+	{ MODKEY|Mod1Mask,              XK_m,      spawn,          SHCMD("st -e ncmpcpp-ueberzug") },
+	{ MODKEY|Mod1Mask,              XK_e,      spawn,          SHCMD("st -e neomutt") },
+	{ MODKEY|Mod1Mask,              XK_w,      spawn,          SHCMD("sxiv -t ~/wallpapers") },
+	{ MODKEY|Mod1Mask,              XK_v,      spawn,          SHCMD("~/Documents/Scripts/vpnconn") },
+	{ MODKEY|Mod1Mask,              XK_z,      spawn,          SHCMD("zathura") },
+	/*                  MOD+SHIFT COMMANDS                      */
+	{ MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("amixer set Master 5%- && pkill -RTMIN+30 dwmblocks") },
+	{ MODKEY|ShiftMask,             XK_u,      spawn,          SHCMD("amixer set Master 5%+ && pkill -RTMIN+30 dwmblocks") },
+	{ MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("amixer set Master toggle && pkill -RTMIN+30 dwmblocks && notify-send -t 500 -u low \"VOLUME TOGGLED\"") },
 	{ ShiftMask|Mod1Mask,	        XK_m,	    spawn,		   SHCMD("mpc toggle; notify-send -t 500 \"MPC\" \"TOGGLED\"") },
 	{ MODKEY,        			    XK_bracketleft,spawn,	   SHCMD("mpc seek -10") },
 	{ MODKEY|ShiftMask,		        XK_bracketleft,spawn,	   SHCMD("mpc seek -60") },
