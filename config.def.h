@@ -84,10 +84,12 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	//{ MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("dmenu_run -i -fn 'Source Code Pro:size=10' -nb '#1a1b2c' -nf '#f7768e' -sb '#ff9e64' -sf '#1a1b27'") },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("dmenu_run -i -fn 'Source Code Pro:size=10'") },
-	{ MODKEY|ShiftMask,             XK_d, spawn,          SHCMD("rofi -show run") },
+	    { MODKEY|ShiftMask,             XK_d, spawn,           SHCMD("rofi -show run") },
 	{ MODKEY|ControlMask,           XK_Return, spawn,          SHCMD("alacritty -e bash") },
 	{ MODKEY,                       XK_Return, spawn,          SHCMD("st -e zsh") },
-	{ MODKEY|Mod1Mask,             XK_Return, spawn,  {.v = scratchpadcmd } },
+	    { MODKEY|ControlMask,            XK_b, spawn,          SHCMD("~/firefox.sh") },
+	{ MODKEY|Mod1Mask,             XK_Return, spawn,  	   SHCMD("emacs") },
+	/* { MODKEY|Mod1Mask,             XK_Return, spawn,  {.v = scratchpadcmd } }, */
 	{ MODKEY,                       XK_n,      shiftview,      { .i = +1 } },
 	{ MODKEY,                       XK_p,      shiftview,      { .i = -1 } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
