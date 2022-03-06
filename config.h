@@ -8,13 +8,13 @@ static const unsigned int minwsz    = 20;       /* Minimal heigt of a client for
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "SourceCodePro:size=10" };
-static const char dmenufont[]       = "SourceCodePro:size=10";
+static const char *fonts[]          = { "JetBrainsMono:size=10" };
+static const char dmenufont[]       = "JetBrainsMono:size=10";
 // static const char col_gray1[]       = "#1a1b26";    // status bar bg
-static const char col_gray1[]       = "#282a36";    // status bar bg
-static const char col_gray2[]       = "#282a36";    // None selected window border
+static const char col_gray1[]       = "#2E3440";    // status bar bg
+static const char col_gray2[]       = "#2E3440";    // None selected window border
 static const char col_gray3[]       = "#ff79c6";    // forground
-static const char col_gray4[]       = "#282a36";    // window title fg
+static const char col_gray4[]       = "#2E3440";    // window title fg
 static const char col_cyan[]        = "#ffb86c";    // selected window border and title bg 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
